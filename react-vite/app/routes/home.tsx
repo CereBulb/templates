@@ -17,7 +17,7 @@ export function meta({}: Route.MetaArgs) {
 const LoginSchema = z.object({
 	username: z.string().min(1, 'Username is required!'),
 	email: z.email('Invalid email!'),
-	password: z.string().length(8, 'Password must be 8 letter!'),
+	password: z.string().min(8, 'Password must be 8 letter!'),
 })
 
 type Login = z.infer<typeof LoginSchema>
@@ -55,7 +55,7 @@ export default function Home() {
 					</FormField>
 
 					<FormField<Login> name="email" label="Email" control={control}>
-						<Input {...register('password')} />
+						<Input {...register('email')} />
 					</FormField>
 
 					<SubmitButton />
